@@ -24,4 +24,4 @@ hs_err_pid*
 
 ## Additional project specific ignore
 # target directory
-target/**
+/target/
