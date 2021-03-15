@@ -23,5 +23,12 @@
 hs_err_pid*
 
 ## Additional project specific ignore
-# target directory
+# Ignore target directory created by maven
 /target/
+
+# Ignore settings directory created by eclipse
+/.settings/
+
+# Ignore classpath & project file created by eclipse
+/.classpath
+/.project
