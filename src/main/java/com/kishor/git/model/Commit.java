@@ -1,5 +1,10 @@
 package com.kishor.git.model;
 
+/**
+ * This class is a pojo/ model representing one git commit
+ * @author kishor
+ *
+ */
 public class Commit implements Comparable<Commit>{
     private String hash;
     private String author;
