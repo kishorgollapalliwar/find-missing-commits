@@ -5,7 +5,7 @@ package com.kishor.git.model;
  * @author kishor
  *
  */
-public class Commit implements Comparable<Commit>{
+public class Commit {
     private String hash;
     private String author;
     private Long   time;
@@ -54,10 +54,5 @@ public class Commit implements Comparable<Commit>{
     @Override
     public String toString() {
         return "Commit [hash=" + hash + ", author=" + author + ", time=" + time + ", subject=" + subject + "]";
-    }
-
-    @Override
-    public int compareTo(Commit o) {
-        return this.time.compareTo(o.time);
     }
 }
