@@ -18,7 +18,7 @@ public class App {
 
     private static void validateArguments(String[] args) {
         if (args.length < 3) {
-            throw new RuntimeException("\nThis program expects 3 inputs as follow. \n1. Input directory \n2. Base Branch name \n3. Other Branch name");
+            throw new RuntimeException("\n\nThis program expects 3 inputs as follow. \n1. Input directory \n2. Base Branch name \n3. Other Branch name");
         }
     }
 }
