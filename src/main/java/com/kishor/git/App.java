@@ -8,6 +8,8 @@ package com.kishor.git;
  *  <li>Parse input</li>
  *  <li>Delegate commit finding functionality</li>
  * </ol>to start the commit finding process
+ *
+ * @author kishor
  */
 
 public class App {
