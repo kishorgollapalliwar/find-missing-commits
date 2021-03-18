@@ -8,10 +8,17 @@ package com.kishor.git;
  *  <li>Parse input</li>
  *  <li>Delegate commit finding functionality</li>
  * </ol>to start the commit finding process
- *
  */
+
 public class App {
     public static void main( String[] args ) {
-        System.out.println( "Hello World!" );
+        //#1. Input Validation
+        validateArguments(args);
+    }
+
+    private static void validateArguments(String[] args) {
+        if (args.length < 3) {
+            throw new RuntimeException("\nThis program expects 3 inputs as follow. \n1. Input directory \n2. Base Branch name \n3. Other Branch name");
+        }
     }
 }
