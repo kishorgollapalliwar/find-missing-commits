@@ -1,5 +1,11 @@
 package com.kishor.git.commit;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -23,7 +29,25 @@ public class CommitFileReader implements CommitReader{
 
     @Override
     public Map<String, List<Commit>> read() {
-        // TODO Auto-generated method stub
-        return null;
+        Map<String, List<Commit>> commits = new HashMap<>();
+
+        try (BufferedReader reader = new BufferedReader(new FileReader(new File(fileName.get())))) {
+            reader.lines().forEach(l -> {
+                Commit comm = new Commit(l);
+                String key  = comm.getSubject();
+
+                List<Commit> cmmList = commits.get(key);
+                if (cmmList == null) {
+                    cmmList = new ArrayList<Commit>();
+                }
+
+                cmmList.add(comm);
+                commits.put(key, cmmList);
+            });
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return commits;
     }
 }
