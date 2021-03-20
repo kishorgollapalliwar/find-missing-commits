@@ -2,6 +2,7 @@ package com.kishor.git.commit;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.Properties;
 
 import com.kishor.git.model.Commit;
@@ -13,10 +14,11 @@ import com.kishor.git.model.Commit;
  */
 public class CommitFileReader implements CommitReader{
 
+    private Optional<String> fileName = null;
+
     @Override
     public void init(Properties props) {
-        // TODO Auto-generated method stub
-        
+        fileName = Optional.ofNullable(props.getProperty("input.file.path"));
     }
 
     @Override
@@ -24,5 +26,4 @@ public class CommitFileReader implements CommitReader{
         // TODO Auto-generated method stub
         return null;
     }
-
 }
