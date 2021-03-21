@@ -18,13 +18,14 @@ import com.kishor.git.model.Commit;
  * @author kishor
  *
  */
-public class CommitFileReader implements CommitReader{
+public class CommitFileReader implements CommitReader {
+    public static final String INPUT_FILE_PATH_PROPS_KEY = "input.file.path";
 
     private Optional<String> fileName = null;
 
     @Override
     public void init(Properties props) {
-        fileName = Optional.ofNullable(props.getProperty("input.file.path"));
+        fileName = Optional.ofNullable(props.getProperty(INPUT_FILE_PATH_PROPS_KEY));
     }
 
     @Override
