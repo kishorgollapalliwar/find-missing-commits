@@ -1,6 +1,12 @@
 package com.kishor.git;
 
 import java.io.File;
+import java.util.List;
+import java.util.Map;
+import java.util.Properties;
+
+import com.kishor.git.commit.CommitFileReader;
+import com.kishor.git.model.Commit;
 
 /**
  * Main class
@@ -27,6 +33,16 @@ public class App {
         if (!inputDirectory.endsWith(File.separator)) {
             inputDirectory = inputDirectory + File.separator;
         }
+
+        //#2 Read base branch commits
+        Properties baseProps = new Properties();
+        baseProps.setProperty(CommitFileReader.INPUT_FILE_PATH_PROPS_KEY, inputDirectory+File.separator+baseBranchName);
+        CommitFileReader baseCommitFileReader = new CommitFileReader();
+        baseCommitFileReader.init(baseProps);
+
+        Map<String, List<Commit>> baseBranch = baseCommitFileReader.read();
+
+        //#3 Read other branch commits
     }
 
     private static void validateArguments(String[] args) {
