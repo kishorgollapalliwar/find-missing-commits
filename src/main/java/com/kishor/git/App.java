@@ -1,5 +1,7 @@
 package com.kishor.git;
 
+import java.io.File;
+
 /**
  * Main class
  * Responsibility of this class is as follows
@@ -16,6 +18,15 @@ public class App {
     public static void main( String[] args ) {
         //#1. Input Validation
         validateArguments(args);
+
+        //#2. Input parsing/ cleansing
+        String inputDirectory = args[0];
+        String baseBranchName = args[1];
+        String otherBranchName= args[2];
+
+        if (!inputDirectory.endsWith(File.separator)) {
+            inputDirectory = inputDirectory + File.separator;
+        }
     }
 
     private static void validateArguments(String[] args) {
