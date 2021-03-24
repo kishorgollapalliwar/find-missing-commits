@@ -5,7 +5,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 
-import com.kishor.git.commit.CommitFileReader;
+import com.kishor.git.commit.read.CommitFileReader;
+import com.kishor.git.commit.read.CommitReader;
 import com.kishor.git.model.Commit;
 
 /**
@@ -35,23 +36,27 @@ public class App {
         }
 
         //#3 Read base branch commits
-        Properties baseProps = new Properties();
-        baseProps.setProperty(CommitFileReader.INPUT_FILE_PATH_PROPS_KEY, inputDirectory+File.separator+baseBranchName);
-        CommitFileReader baseCommitFileReader = new CommitFileReader();
-        baseCommitFileReader.init(baseProps);
-
-        Map<String, List<Commit>> baseBranch = baseCommitFileReader.read();
+        CommitReader baseCommitReader = getCommitFileReader(inputDirectory+File.separator+baseBranchName);
+        Map<String, List<Commit>> baseBranch = baseCommitReader.read();
 
         //#4 Read other branch commits
-        Properties otherProps = new Properties();
-        otherProps.setProperty(CommitFileReader.INPUT_FILE_PATH_PROPS_KEY, inputDirectory+File.separator+otherBranchName);
-        CommitFileReader otherCommitFileReader = new CommitFileReader();
-        Map<String, List<Commit>> otherBranch = otherCommitFileReader.read();
+        CommitReader otherCommitReader = getCommitFileReader(inputDirectory+File.separator+otherBranchName);
+        Map<String, List<Commit>> otherBranch = otherCommitReader.read();
     }
 
     private static void validateArguments(String[] args) {
         if (args.length < 3) {
             throw new RuntimeException("\n\nThis program expects 3 inputs as follow. \n1. Input directory \n2. Base Branch name \n3. Other Branch name");
         }
+    }
+
+    private static CommitReader getCommitFileReader(final String inputFilePath) {
+        Properties props = new Properties();
+        props.setProperty(CommitFileReader.INPUT_FILE_PATH_PROPS_KEY, inputFilePath);
+
+        CommitReader commitReader = new CommitFileReader();
+        commitReader.init(props);
+
+        return commitReader;
     }
 }
