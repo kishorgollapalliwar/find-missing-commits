@@ -34,7 +34,7 @@ public class App {
             inputDirectory = inputDirectory + File.separator;
         }
 
-        //#2 Read base branch commits
+        //#3 Read base branch commits
         Properties baseProps = new Properties();
         baseProps.setProperty(CommitFileReader.INPUT_FILE_PATH_PROPS_KEY, inputDirectory+File.separator+baseBranchName);
         CommitFileReader baseCommitFileReader = new CommitFileReader();
@@ -42,7 +42,11 @@ public class App {
 
         Map<String, List<Commit>> baseBranch = baseCommitFileReader.read();
 
-        //#3 Read other branch commits
+        //#4 Read other branch commits
+        Properties otherProps = new Properties();
+        otherProps.setProperty(CommitFileReader.INPUT_FILE_PATH_PROPS_KEY, inputDirectory+File.separator+otherBranchName);
+        CommitFileReader otherCommitFileReader = new CommitFileReader();
+        Map<String, List<Commit>> otherBranch = otherCommitFileReader.read();
     }
 
     private static void validateArguments(String[] args) {
