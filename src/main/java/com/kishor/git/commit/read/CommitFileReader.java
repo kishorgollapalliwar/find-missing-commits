@@ -1,4 +1,4 @@
-package com.kishor.git.commit;
+package com.kishor.git.commit.read;
 
 import java.io.BufferedReader;
 import java.io.File;

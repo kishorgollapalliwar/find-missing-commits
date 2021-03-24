@@ -1,4 +1,4 @@
-package com.kishor.git.commit;
+package com.kishor.git.commit.read;
 
 import java.util.List;
 import java.util.Map;
