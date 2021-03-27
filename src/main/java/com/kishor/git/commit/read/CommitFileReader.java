@@ -11,6 +11,7 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.Properties;
 
+import com.kishor.git.Constants;
 import com.kishor.git.model.Commit;
 
 /**
@@ -19,13 +20,11 @@ import com.kishor.git.model.Commit;
  *
  */
 public class CommitFileReader implements CommitReader {
-    public static final String INPUT_FILE_PATH_PROPS_KEY = "input.file.path";
-
     private Optional<String> fileName = null;
 
     @Override
     public void init(Properties props) {
-        fileName = Optional.ofNullable(props.getProperty(INPUT_FILE_PATH_PROPS_KEY));
+        fileName = Optional.ofNullable(props.getProperty(Constants.INPUT_FILE_PATH_PROPS_KEY));
     }
 
     @Override

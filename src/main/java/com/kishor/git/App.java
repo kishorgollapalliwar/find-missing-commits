@@ -52,7 +52,7 @@ public class App {
 
     private static CommitReader getCommitFileReader(final String inputFilePath) {
         Properties props = new Properties();
-        props.setProperty(CommitFileReader.INPUT_FILE_PATH_PROPS_KEY, inputFilePath);
+        props.setProperty(Constants.INPUT_FILE_PATH_PROPS_KEY, inputFilePath);
 
         CommitReader commitReader = new CommitFileReader();
         commitReader.init(props);
