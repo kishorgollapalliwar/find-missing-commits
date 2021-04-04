@@ -17,7 +17,7 @@ import com.kishor.git.model.Commit;
 /**
  * Responsibility of this class is to read commit file and generate {@link java.util.Map map} of commits
  * @author kishor
- *
+ * git log --pretty=format:"%H%x09%an%x09%ad%x09%s" --date=unix > ~/Desktop/tmp/commits/main.csv
  */
 public class CommitFileReader implements CommitReader {
     private Optional<String> fileName = null;
