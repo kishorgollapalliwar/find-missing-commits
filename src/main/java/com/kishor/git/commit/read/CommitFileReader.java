@@ -5,7 +5,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -29,7 +29,7 @@ public class CommitFileReader implements CommitReader {
 
     @Override
     public Map<String, List<Commit>> read() {
-        Map<String, List<Commit>> commits = new HashMap<>();
+        Map<String, List<Commit>> commits = new LinkedHashMap<>();
 
         try (BufferedReader reader = new BufferedReader(new FileReader(new File(fileName.get())))) {
             reader.lines().forEach(l -> {
